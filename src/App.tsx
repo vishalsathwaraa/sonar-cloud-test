@@ -36,9 +36,7 @@ function centerAspectCrop(
 
 export default function App() {
   const [imgSrc, setImgSrc] = useState("");
-  console.log("🚀 ~ file: App.tsx:39 ~ App ~ imgSrc:", imgSrc);
   const [images, setAllImages] = useState<any>([]);
-  console.log("🚀 ~ file: App.tsx:40 ~ App ~ images:", images);
   const previewCanvasRef = useRef<HTMLCanvasElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const hiddenAnchorRef = useRef<HTMLAnchorElement>(null);
@@ -58,7 +56,7 @@ export default function App() {
     setCrop(undefined); // Makes crop preview update between images.
     const reader = new FileReader();
     reader.addEventListener("load", () =>
-      setImgSrc(reader.result?.toString() || "")
+      setImgSrc(reader.result?.toString() ?? "")
     );
 
     reader.readAsDataURL(image);
@@ -73,7 +71,6 @@ export default function App() {
 
   async function onDownloadCropClick() {
     const image = imgRef.current;
-    console.log("🚀 ~ file: App.tsx:74 ~ onDownloadCropClick ~ image:", image);
     const previewCanvas = previewCanvasRef.current;
     if (!image || !previewCanvas || !completedCrop) {
       throw new Error("Crop canvas does not exist");
