@@ -107,16 +107,11 @@ export default function App() {
     const blob = await offscreen.convertToBlob({
       type: "image/png",
     });
-    console.log("🚀 ~ file: App.tsx:111 ~ onDownloadCropClick ~ blob:", blob);
 
     if (blobUrlRef.current) {
       URL.revokeObjectURL(blobUrlRef.current);
     }
     blobUrlRef.current = URL.createObjectURL(blob);
-    console.log(
-      "🚀 ~ file: App.tsx:115 ~ onDownloadCropClick ~ blobUrlRef.current:",
-      blobUrlRef.current
-    );
     hiddenAnchorRef.current!.href = blobUrlRef.current;
     hiddenAnchorRef.current!.click();
   }
