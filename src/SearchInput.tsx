@@ -1,11 +1,10 @@
 import React from "react";
 import cx from "classnames";
-import { RiSearch2Line } from "react-icons/ri";
 import { HiInformationCircle } from "react-icons/hi";
 import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
+    Tooltip,
+    TooltipTrigger,
+    TooltipContent,
 } from "./Tooltip";
 
 interface InputProps {
@@ -17,7 +16,6 @@ interface InputProps {
   error?: string;
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
-  icon?: React.ReactNode;
   required?: boolean;
   value?: string;
   rounded?: boolean;

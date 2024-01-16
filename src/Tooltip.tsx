@@ -1,21 +1,21 @@
 import * as React from "react";
 import {
-  useFloating,
-  autoUpdate,
-  offset,
-  flip,
-  shift,
-  useHover,
-  useFocus,
-  useDismiss,
-  useRole,
-  useInteractions,
-  useMergeRefs,
-  FloatingPortal,
-  arrow,
-  useTransitionStyles,
-  FloatingArrow,
-  Placement,
+    useFloating,
+    autoUpdate,
+    offset,
+    flip,
+    shift,
+    useHover,
+    useFocus,
+    useDismiss,
+    useRole,
+    useInteractions,
+    useMergeRefs,
+    FloatingPortal,
+    arrow,
+    useTransitionStyles,
+    FloatingArrow,
+    Placement,
 } from "@floating-ui/react";
 
 interface TooltipOptions {
@@ -25,19 +25,8 @@ interface TooltipOptions {
   onOpenChange?: (open: boolean) => void;
 }
 
-interface Props {
-  render: (data: {
-    close: () => void;
-    labelId: string;
-    descriptionId: string;
-  }) => React.ReactNode;
-  placement?: Placement;
-  children: JSX.Element;
-}
-
 const ARROW_WIDTH = 16;
 const ARROW_HEIGHT = 8;
-const PLACEMENTS = ["top", "bottom", "left", "right"] as const;
 
 export function useTooltip({
   initialOpen = false,
@@ -148,7 +137,9 @@ export function Tooltip({
 
 export const TooltipTrigger = React.forwardRef<
   HTMLElement,
-  React.HTMLProps<HTMLElement> & { asChild?: boolean }
+  React.HTMLProps<HTMLElement> & {
+    asChild?: boolean;
+  }
 >(function TooltipTrigger({ children, asChild = false, ...props }, propRef) {
   const context = useTooltipContext();
   const childrenRef = (children as any).ref;
@@ -183,11 +174,11 @@ export const TooltipContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLProps<HTMLDivElement>
 >(function TooltipContent(
-  { className, style, children, width, ...props },
+  { className, children },
   propRef
 ) {
   const context = useTooltipContext();
-  const ref = useMergeRefs([context.refs.setFloating, propRef]);
+  useMergeRefs([context.refs.setFloating, propRef]);
 
   if (!context.open) return null;
 

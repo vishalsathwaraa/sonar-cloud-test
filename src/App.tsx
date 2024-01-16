@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SearchInput from "./SearchInput";
 import { RiSearch2Line } from "react-icons/ri";
 import { CgOptions } from "react-icons/cg";
