@@ -1,21 +1,21 @@
 import * as React from "react";
 import {
-    useFloating,
-    autoUpdate,
-    offset,
-    flip,
-    shift,
-    useHover,
-    useFocus,
-    useDismiss,
-    useRole,
-    useInteractions,
-    useMergeRefs,
-    FloatingPortal,
-    arrow,
-    useTransitionStyles,
-    FloatingArrow,
-    Placement,
+  useFloating,
+  autoUpdate,
+  offset,
+  flip,
+  shift,
+  useHover,
+  useFocus,
+  useDismiss,
+  useRole,
+  useInteractions,
+  useMergeRefs,
+  FloatingPortal,
+  arrow,
+  useTransitionStyles,
+  FloatingArrow,
+  Placement,
 } from "@floating-ui/react";
 
 interface TooltipOptions {
@@ -140,13 +140,16 @@ export const TooltipTrigger = React.forwardRef<
   React.HTMLProps<HTMLElement> & {
     asChild?: boolean;
   }
->(function TooltipTrigger({ children, asChild = false, ...props }, propRef) {
+>(function TooltipTrigger(
+  { children, asChild = false, ...props }: any,
+  propRef
+) {
   const context = useTooltipContext();
-  const childrenRef = (children as any).ref;
+  const childrenRef = children.ref;
   const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef]);
 
   // `asChild` allows the user to pass any element as the anchor
-  if (asChild && React.isValidElement(children)) {
+  if (asChild && React.isValidElement(children) && children.props) {
     return React.cloneElement(
       children,
       context.getReferenceProps({
@@ -173,10 +176,7 @@ export const TooltipTrigger = React.forwardRef<
 export const TooltipContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLProps<HTMLDivElement>
->(function TooltipContent(
-  { className, children },
-  propRef
-) {
+>(function TooltipContent({ className, children }, propRef) {
   const context = useTooltipContext();
   useMergeRefs([context.refs.setFloating, propRef]);
 
