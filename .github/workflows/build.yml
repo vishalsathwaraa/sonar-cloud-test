@@ -20,7 +20,7 @@ jobs:
       run: yarn
     - name: Test and coverage
       run: yarn jest --coverage
-    - name: sonar-cloud-test
+    - name:  SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@master
       env:
         GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
