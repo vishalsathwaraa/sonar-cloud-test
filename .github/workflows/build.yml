@@ -16,16 +16,16 @@ jobs:
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
-    # - name: Install dependencies
-    #   run: yarn
-    # - name: Test and coverage
-    #   run: yarn jest --coverage
+    - name: Install dependencies
+      run: yarn
+    - name: Test and coverage
+      run: yarn jest --coverage
     - name:  SonarQube Scan
       uses: SonarSource/sonarcloud-github-action@master
       with:
          args: >
-          -Dsonar.organization=myOrg
-          -Dsonar.projectKey=myProjectKey
+          -Dsonar.organization=vishalsathwaraa
+          -Dsonar.projectKey=vishalsathwaraa_sonar-cloud-test
           -Dsonar.sources=src
           -Dsonar.tests=src
           -Dsonar.test.inclusions=src/**/__tests__/**
