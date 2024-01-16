@@ -33,5 +33,11 @@
     "tailwindcss": "^3.4.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
+  },
+  "jestSonar": {
+    "sonar56x": true,
+    "reportPath": "testResults",
+    "reportFile": "sonar-report.xml",
+    "indent": 4
   }
 }
