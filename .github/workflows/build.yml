@@ -19,9 +19,19 @@ jobs:
     - name: Install dependencies
       run: yarn
     - name: Test and coverage
-      run: yarn jest --coverage
+      run: yarn test-ci
     - name:  SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@master
+      uses: SonarSource/sonarcloud-github-action@master
+      with:
+         args: >
+          -Dsonar.organization=myOrg
+          -Dsonar.projectKey=myProjectKey
+          -Dsonar.sources=src
+          -Dsonar.tests=src
+          -Dsonar.test.inclusions=src/**/__tests__/**
+          -Dsonar.exclusions=src/**/__tests__/**
+          -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
+          -Dsonar.coverage.exclusions=__mocks__/**,.storybook/**,src/stories/**,src/types/**
       env:
         GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
