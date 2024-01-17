@@ -1,17 +1,16 @@
-import { useEffect, DependencyList } from 'react'
-import { ROLE } from './constant'
+import { useEffect } from "react";
 export function useDebounceEffect(
   fn: () => void,
   waitTime: number,
-  deps?: any,
+  deps?: any
 ) {
   useEffect(() => {
     const t = setTimeout(() => {
-      fn.apply(undefined, deps)
-    }, waitTime)
+      fn.call(deps);
+    }, waitTime);
 
     return () => {
-      clearTimeout(t)
-    }
-  }, deps)
+      clearTimeout(t);
+    };
+  }, deps);
 }
