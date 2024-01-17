@@ -10,6 +10,7 @@ export async function canvasPreview(
   rotate = 0,
 ) {
   const ctx = canvas.getContext('2d')
+  const fix_height = 450;
 
   if (!ctx) {
     throw new Error('No 2d context')
