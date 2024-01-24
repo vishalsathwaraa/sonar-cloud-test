@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - main
+      - sonar-test
   pull_request:
       types: [opened, synchronize, reopened]
 name: Main Workflow
